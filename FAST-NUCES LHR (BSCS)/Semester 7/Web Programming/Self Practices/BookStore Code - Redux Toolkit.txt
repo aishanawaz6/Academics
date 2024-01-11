@@ -1,0 +1,273 @@
+//App.js
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link, Outlet, useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { updateBooks } from './store/bookDetailSlice.ts';
+import './bookStore.css';
+
+function GridBooks() {
+  const booksData = useSelector((state) => state.bookDetail.books);
+
+  return (
+    <div>
+      <h2>Books in Grid Format</h2>
+      <div className="grid-form">
+        {booksData.map((book, index) => (
+          <Link to={`/book-detail/${index}`} key={index} className="book-card">
+            <h3>{book.title}</h3>
+            <p>Description: {book.description}</p>
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function TableBooks() {
+  const booksData = useSelector((state) => state.bookDetail.books);
+
+  return (
+    <div>
+      <h2>Books in Table Format</h2>
+      <table className="table-form">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {booksData.map((book, index) => (
+            <tr key={index}>
+              <td>
+                <Link to={`/book-detail/${index}`}>{book.title}</Link>
+              </td>
+              <td>{book.description}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function BookDetail() {
+  const { index } = useParams();
+  const booksData = useSelector((state) => state.bookDetail.books);
+  const book = booksData[index];
+
+  return (
+    <div>
+      <h2>Book Details</h2>
+      <p>Title: {book.title}</p>
+      <p>Date: {book.date}</p>
+      <p>Description: {book.description}</p>
+      <p>Status: {book.status}</p>
+      <p>Book Requests:</p>
+      <ul>
+        {book.bookRequests.map((request, i) => (
+          <li key={i}>
+            {request.personName} (ID: {request.personId})
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function App() {
+  const dispatch = useDispatch();
+  
+  // Dispatch the updateBooks action with the payload when the component mounts
+  React.useEffect(() => {
+    // Simulate fetching data (replace with your actual data-fetching logic)
+    const books = [
+      {
+        title: 'Dr. No',
+        date: 'October 25, 2023',
+        description: 'Detective',
+        status: 'Available',
+        bookRequests: [
+          { personId: 1, personName: 'Hussain' },
+          { personId: 2, personName: 'Saif' },
+        ],
+      },
+      {
+        title: 'Saira Ka',
+        date: 'October 05, 2023',
+        description: 'Human',
+        status: 'Available',
+        bookRequests: [
+          { personId: 1, personName: 'Kali' },
+          { personId: 2, personName: 'Junaid' },
+        ],
+      },
+    ];
+    dispatch(updateBooks(books));
+  }, [dispatch]);
+
+  const [displayFormat, setDisplayFormat] = useState('grid'); 
+  const toggleDisplayFormat = () => {
+    setDisplayFormat(displayFormat === 'grid' ? 'table' : 'grid');
+  };
+
+  return (
+    <Router>
+      <div>
+        <h1>Welcome To Our BookStore!</h1>
+        <p></p>
+        <button onClick={toggleDisplayFormat}>
+         Click to Change View (Grid/Table)
+        </button>
+
+        {displayFormat === 'grid' ? <GridBooks /> : <TableBooks />}
+  
+        <Routes>
+          <Route path="/book-detail/:index" element={<BookDetail />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+}
+
+export default App;
+
+//BookStore.css
+h1{
+    color:red;
+    text-align:center;
+}
+/* Styles for the container div */
+thead {
+
+text-align: left;
+color:green;
+}
+.grid-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  
+  .table-form {
+    display: table;
+    width: 100%;
+  }
+  
+  /* Styles for individual book items */
+  .book-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    background-color: #f9f9f9;
+  }
+  
+  /* Style for the button */
+  button {
+    background-color: #0074d9;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Style for the book details section */
+  .book-details {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+  }
+  
+  /* Style for the "Toggle Display Format" button */
+  button.toggle-format {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  
+  /* Style for the book details */
+  .book-details h2 {
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  .book-details p {
+    margin: 5px 0;
+  }
+  //BookDeatilSlice.ts
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
+export interface Book {
+  title: string;
+  date: string;
+  description: string;
+  status: string;
+  bookRequests: { personId: number; personName: string }[];
+}
+
+interface BookDetailState {
+  books: Book[];
+}
+
+const initialState: BookDetailState = {
+  books: [],
+};
+
+const bookDetailSlice = createSlice({
+  name: 'bookDetail',
+  initialState,
+  reducers: {
+    updateBooks: (state, action: PayloadAction<Book[]>) => {
+      state.books = action.payload;
+    },
+  },
+});
+
+export const { updateBooks } = bookDetailSlice.actions;
+export default bookDetailSlice.reducer;
+//Index.js
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+
+import { Provider } from "react-redux";
+import { GlobalStore } from "./store/index.ts";
+
+
+// export type AppDispatch = typeof GlobalStore.dispatch;
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+     
+        <Provider store={GlobalStore}>
+      <App />
+    </Provider>
+  </React.StrictMode>
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
+
+//Index.ts
+import bookDetailSlice  from "./bookDetailSlice.ts";
+import { configureStore } from '@reduxjs/toolkit'
+export const GlobalStore = configureStore({
+  reducer: {
+    bookDetail: bookDetailSlice,
+  },
+});
+
+export type RootState = ReturnType<typeof GlobalStore.getState>;
+export type AppDispatch = typeof GlobalStore.dispatch;
+
+

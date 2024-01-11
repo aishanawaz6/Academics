@@ -1,0 +1,110 @@
+//L200921 Aisha Muhammad Nawaz
+//Web Programming Class Activity 17NOV FRIDAY : NodeJS, ExpressJS, MongoDB, Postman
+//Book Store, READ , WRITE , UPDATE OPERATIONS
+//npm i express / mongoose / body-parser
+//App.js
+
+var express=require('express');
+const app=express();
+
+const bodyParser=require('body-parser');
+var mongoose = require('mongoose');
+var Book = require('./Book.model');
+
+var db= 'mongodb://127.0.0.1:27017/testDB';
+mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true });
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({
+  extended:true
+}));
+
+
+app.get('/',function(req,res){
+  res.send('Welcome to Our BookStore!');
+});
+
+//Getting All Books  (READ)
+app.get('/getBooks', function (req, res) {
+  console.log('Getting all the Books!');
+  
+  // Use the .exec() method without a callback
+  Book.find({}).exec()
+      .then(books => {
+          // Handle the result, for example, send it as a JSON response
+          res.json(books);
+      })
+      .catch(err => {
+          // Handle errors
+          console.error(err);
+          res.status(500).send('Internal Server Error');
+      });
+});
+
+//Inserting A Book (WRITE)
+app.post('/book', function (req, res) {
+  var newBook = new Book({
+    title: req.body.title,
+    author: req.body.author,
+    category: req.body.category
+  });
+
+  newBook.save()
+    .then(book => {
+      console.log(book);
+      res.send(book);
+    })
+    .catch(err => {
+      console.error('Error saving book:', err);
+      res.status(500).send('Error saving book');
+    });
+});
+
+// Updating A Book (UPDATE) using the book title
+app.put('/book/:title', function (req, res) {
+  const bookTitle = req.params.title;
+  const updatedBookData = {
+    title:req.body.title,
+    author: req.body.author,
+    category: req.body.category
+  };
+
+  // Use the findOneAndUpdate method to update the book by title
+  Book.findOneAndUpdate({ title: bookTitle }, updatedBookData, { new: true })
+    .then(updatedBook => {
+      if (!updatedBook) {
+        // Book not found
+        return res.status(404).send('Book not found');
+      }
+
+      console.log('Updated Book:', updatedBook);
+      res.json(updatedBook);
+    })
+    .catch(err => {
+      console.error('Error updating book:', err);
+      res.status(500).send('Error updating book');
+    });
+});
+
+
+
+const port = 3000;
+
+app.listen(port, () => {
+  console.log(`Server is running at http://localhost:${port}/`);
+});
+
+console.log('Works!');
+
+// Book.model.js
+const mongoose = require('mongoose');
+
+const bookSchema = new mongoose.Schema({
+  title: String,
+  author: String,
+  category: String
+});
+
+const Book = mongoose.model('Book', bookSchema);
+
+module.exports = Book;

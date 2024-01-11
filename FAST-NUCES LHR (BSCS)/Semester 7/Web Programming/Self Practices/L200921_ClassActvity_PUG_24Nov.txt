@@ -1,0 +1,59 @@
+//L200921 Aisha M Nawaz BSCS 7B Web Programming 24 Nov Class Activity
+//IN views/index.pug
+html
+  head
+    title Product Page
+  body
+    h1 Welcome to Product Page
+    include includes/nav
+    main
+      h2 Products List
+      - var productList = [{id:1,name:'Apple Airpods',image:'image.jpg'}, {id:2,name:'Glass',image:'image2.jpg'}]
+      ul
+        each product in productList
+          li
+            | Product ID: #{product.id}
+            | Product Name: #{product.name}
+            img(src=product.image, alt=product.name)
+    include includes/footer
+
+
+
+//IN view/includes/nav.pug
+h1 SHOPAWAY 
+nav 
+   a(href="index.html") Home 
+   a(href="#") About Us
+   a(href="#") Contact Us 
+
+
+
+//IN views/includes/footer.pug
+footer
+  h1 SHOPAWAY
+  nav
+    a(href="index.html") Home
+    a(href="#") About Us
+    a(href="#") Contact Us
+  p
+    | Welcome to SHOPAWAY, best source for all your needs. 
+
+
+
+//IN App.js
+const express = require("express");
+const path = require("path");
+
+const app = express();
+const port = "8000";
+
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "pug");
+
+app.get('/', (req,res)=> {
+    res.render('index')
+});
+
+app.listen(port, ()=> {
+    console.log('Listening to request on http://localhost:8000');
+})

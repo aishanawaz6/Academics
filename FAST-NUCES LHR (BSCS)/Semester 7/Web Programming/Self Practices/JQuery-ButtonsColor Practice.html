@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Color Buttons</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+	<h1>THIS IS A PAGE WITH CHANGE COLOR OPTION.</h1>
+<button type='submit' id='red'>Red</button>
+<button type='submit' id='blue'>Blue</button>
+<button type='submit' id='green'>Green</button>
+<script>
+$(document).ready(function(){
+	alert('Welcome!');
+});
+
+$('button').hover(function(){
+	var id='#'+$(this).attr('id');
+	$(id).css({
+		'color':$(this).html(),
+		'background-color':'white'
+	});
+});
+
+$('button').mouseout(function(){
+	var id='#'+$(this).attr('id');
+	$(id).css({
+		'color':'silver',
+		'background-color':'white'
+	});
+});
+
+$('button').click(function(){
+	$('h1').css({
+		'color':$(this).html(),
+		'background-color':'purple'
+	});
+});
+</script>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,103 @@
+import React, { useState,useEffect } from 'react';
+import './testRegister.css';
+
+
+function App() {
+  const[testCenter,setTestCenter]=useState('Lahore')
+  const [name,setName]=useState('');
+   // Define state variables for checkboxes
+   const [isChecked1, setIsChecked1] = useState(false);
+   const [isChecked2, setIsChecked2] = useState(false);
+ 
+
+  function handleFormValues(e){
+    const Interests=[];
+    if(isChecked1){
+Interests.push('Web Programming')
+    }
+    if(isChecked2){
+      Interests.push('Data Science')
+          }
+          alert(`FORM SUCCESSFULLY SUBMITED BY ${name} for test center at ${testCenter} with interests ${Interests}`);
+    e.preventDefault();
+  }
+
+    return (
+      <> 
+      <h1 id='headingMain'>~ Enter Test Registration Details  ~</h1>
+      <form id='form-test-input' onSubmit={handleFormValues}>
+        <p><label>Full Name:&nbsp;</label></p>
+        <input type='text'value={name} onChange={(e)=>setName(e.target.value)} placeholder='Enter full name as on CNIC'></input>
+        <br/><br/><br/>
+
+        <label>Test Center:&nbsp;</label>
+        <select value={testCenter} onChange={(e)=>setTestCenter(()=>e.target.value)}>
+          <option value='Lahore'>Lahore</option>
+          <option value='Islamabad'>Islamabad</option>
+        </select>
+        <></>
+
+
+        <br/><br/>
+        <p>Interests (please check all that apply): </p>
+        <label>
+        <input
+          type="checkbox"
+          checked={isChecked1}
+          onChange={() => setIsChecked1(!isChecked1)} 
+        />
+        Web Programming
+      </label>
+      <br />
+
+     
+      <label>
+        <input
+          type="checkbox"
+          checked={isChecked2}
+          onChange={() => setIsChecked2(!isChecked2)} 
+        />
+        Data Science
+      </label>
+      <br />
+      <br/>
+        <button id='submit-button'type='submit'>Submit</button>
+  
+      </form>
+ 
+  </>
+  );
+}
+
+export default App;
+//css file
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+#headingMain{
+    position: absolute;
+    left: 450px;
+    top:10px;
+    color: rgb(6, 77, 184);
+  }
+
+  #form-test-input{
+    border-radius: 2px;
+    border-style: solid;
+    border-color: brown;
+    position: fixed;
+    top:20%;
+    left:40%;
+    padding:10px 50px 10px 50px;
+  }
+
+  #submit-button{
+    background-color: aliceblue;
+    border-radius: 40px;
+    padding: 5px;
+    position: relative;
+    left:30%;
+
+  }

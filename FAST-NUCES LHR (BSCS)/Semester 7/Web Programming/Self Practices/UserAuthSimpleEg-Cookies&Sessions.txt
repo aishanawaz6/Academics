@@ -1,0 +1,72 @@
+const express = require('express');
+const session = require('express-session');
+const bodyParser = require('body-parser');
+
+const app = express();
+// Middleware setup
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+app.use(session({
+    secret: 'your_secret_key',
+    resave: true,
+    saveUninitialized: true
+}));
+
+// Sample user data (in a real application, you'd use a database)
+const users = [
+    { id: 1, username: 'a', password: 'b' },
+    { id: 2, username: 'user2', password: 'password2' }
+];
+
+// Middleware to check authentication
+const requireAuth = (req, res, next) => {
+    if (!req.session.user) {
+        return res.status(401).send('Unauthorized');
+    }
+    next();
+};
+
+// Routes
+
+// Login endpoint
+app.post('/login', (req, res) => {
+    const { username, password } = req.body;
+
+    // Check credentials (in a real application, you'd validate against a database)
+    const user = users.find(u => u.username === username && u.password === password);
+console.log(req.body)
+    if (user) {
+        // Create a session and store user data
+        req.session.user = { id: user.id, username: user.username };
+        res.send('Login successful!');
+    } else {
+        res.status(401).send('Invalid credentials');
+    }
+});
+
+// Protected route that requires authentication
+app.get('/dashboard', requireAuth, (req, res) => {
+    const user = req.session.user;
+    res.send(`Welcome to the dashboard, ${user.username}!`);
+});
+
+// Logout endpoint
+app.post('/logout', (req, res) => {
+    // Destroy the session to log out the user
+    req.session.destroy(err => {
+        if (err) {
+            console.error(err);
+            res.status(500).send('Internal Server Error');
+        } else {
+            res.send('Logout successful!');
+        }
+    });
+});
+
+// Server setup
+const PORT = 8080;
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+});

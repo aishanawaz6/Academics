@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WEB MID 1 Q1</title>
+</head>
+<body>
+    <h1><span>Photo of Conservatory Pond in</span></h1>
+
+    <img src='images.jpg'>
+
+    <p><a href='http://www.centralpark.com'>Visit Central Park</a></p>
+
+    <p>Central Park</p>
+
+    <p>GarryLand</p>
+</body>
+<script>
+    // Q1 Delete the attribute node with href value = 'http://www.centralpark.com'
+    var link = document.querySelector('a[href="http://www.centralpark.com"]');
+    if (link) {
+        link.removeAttribute('href');
+    }
+
+    // Q2 Replace the immediate parents of all text nodes with div elements
+    var textNodes = document.body.childNodes;
+    for (var i = 0; i < textNodes.length; i++) {
+        if (textNodes[i].nodeType === Node.TEXT_NODE) {
+            var parentDiv = document.createElement('div');
+            var textNode = textNodes[i];
+            textNode.parentNode.insertBefore(parentDiv, textNode);
+            parentDiv.appendChild(textNode);
+        }
+    }
+</script>
+</html>

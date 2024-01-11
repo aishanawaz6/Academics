@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dynamic Quiz Application</title>
+        <script src="http://code.jquery.com/jquery-2.1.0.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+        <script src="jquery.js"></script>
+<link rel='stylesheet' href='css.css'/>
+</head>
+<body>
+<div id='main-box'>
+ <div id="timer">
+        Timer: <span id="minutes">05</span>:<span id="seconds">00</span>
+ </div>
+<h2 id='QuestionHeading'> Question #</h2>
+<h2 id='QuestionNum'>Question #</h2>
+<p id='Question'></p>
+<h3 id='AnswerHeading'>Answer:</h3>
+
+<input id='box' type='text' placeholder='Write your answer here....'></input>
+<br>
+<br>
+<button id='prev'>Previous</button>
+<button id='submit'>Submit</button>
+<button id='next'>Next</button>
+<div id='dialog' title='This is dialog box'>
+<p>You can't change your answer now!</p>
+<p> Nuumber of questions attempted out of 5 are : <p id='num'></p></p>
+</div>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+Advantages of Circuit-level Proxy Firewall?
+Provides session-level security by authenticating connections, making it harder for attacks to exploit application vulnerabilities.
+Disadvantages of Circuit-level Proxy Firewall?
+May introduce latency due to the need to establish and manage separate connections for each session.
+Advantages of Application Level Gateway?
+Deep inspection and enhanced security.
+Disadvantages of Application Level Gateway?
+Performance overhead and complexity.
+What is the primary role of an Application Level Gateway?
+It operates at the application layer and filters traffic based on specific application protocols.
+How does a Circuit-level Proxy Firewall authenticate users?
+By establishing separate connections and verifying the session's authenticity.
+Why might an Application Level Gateway be considered more secure?
+It can block application-specific attacks and provides granular control over content.
+What can be a drawback of using Circuit-level Proxy Firewall in terms of traffic management?
+It requires managing individual sessions, potentially leading to scalability issues.
+How does an Application Level Gateway ensure better content control?
+By inspecting and filtering content based on application protocols.
+Why might performance be a concern with an Application Level Gateway?
+Due to the detailed inspection at the application layer, it can introduce delays.
+What type of vulnerabilities can Circuit-level Proxy Firewall help mitigate?
+Exploits targeting specific application vulnerabilities or sessions.
+What could make the Circuit-level Proxy Firewall less suitable for large networks?
+The need to manage and establish separate connections for every session.
+How does the Application Level Gateway distinguish itself from other firewalls?
+By operating at the application layer and understanding specific application protocols.
+In what scenarios might an Application Level Gateway be preferred?
+When deep inspection and granular control over application traffic are paramount.
+What potential drawback might users experience with an Application Level Gateway?
+Increased complexity in configuration and maintenance.
+How does a Circuit-level Proxy Firewall enhance security posture?
+By focusing on session-level authentication and control.
+What challenges might arise with the scalability of Circuit-level Proxy Firewall?
+Managing individual sessions could become cumbersome as network traffic grows.
+What makes the Application Level Gateway suitable for filtering content?
+Its capability to understand and act on application-specific protocols and data.
+Why could the Circuit-level Proxy Firewall be seen as offering robust security?
+It adds an additional layer of authentication and control for network sessions.
+What might organizations need to consider when implementing an Application Level Gateway?
+Balancing security benefits with potential performance overheads and complexity.

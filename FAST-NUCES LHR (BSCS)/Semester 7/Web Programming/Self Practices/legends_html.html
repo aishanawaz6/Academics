@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Fieldset and Legend Practice</title>
+<style>
+  fieldset {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  legend {
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+</style>
+</head>
+<body>
+
+<h2>Fieldset and Legend Example</h2>
+
+<form>
+  <fieldset>
+
+    <legend>Personal Information</legend>
+    
+    <label>First Name:</label>
+    <input type="text" id="firstName" name="firstName"><br><br>
+    
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName"><br><br>
+    
+  </fieldset>
+
+  <fieldset>
+    <legend>Contact Information</legend>
+    
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email"><br><br>
+    
+    <label for="phone">Phone:</label>
+    <input type="tel" id="phone" name="phone"><br><br>
+    
+  </fieldset>
+  
+  <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
