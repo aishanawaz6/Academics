@@ -1,0 +1,6 @@
+ID,Name,CNIC
+1,Ahmed,2312
+2,Bilal,4561
+3,Ali,4562
+4,Ayesha,3456
+5,Fatima,3214
