@@ -1,0 +1,33 @@
+#!/usr/bin/tclsh
+
+#Question 1: Write a TCL Script that will take a number from user (user will give you a number greater than 4):
+#a.	If the number is even then you will print all even integers (starting from 4) until that number
+#b.	If the number is odd then you will print all the odd integers (starting from 3) until that number
+
+#Aisha Muhammad Nawaz L20-0921 BSCS 5E1 CN LAB 09
+
+set n 0
+puts "Please enter a number n (must be greater than 4): "
+gets stdin n
+puts "Your Input is: $n"
+
+if {$n>4} {
+
+if {$n % 2 ==0 } {
+   puts "n is even"
+     for {set x 4} {$x<=$n} {set x [expr $x +2]} {
+   puts $x 
+   }
+   
+   
+} else {
+puts "n is odd"
+   for {set x 3} {$x<=$n} {set x [expr $x +2]} {
+   puts $x 
+   }
+   
+}
+} else {
+puts "ERROR! INPUT NUMBER NOT GREATER THAN 4!"
+}
+

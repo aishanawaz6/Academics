@@ -1,0 +1,276 @@
+/*
+        TCP_Server. This Program will will create the Server side for TCP_Socket Programming.
+        It will receive the data from the client and then send the same data back to client.
+*/
+
+#include <stdio.h> 
+#include <string.h> 
+#include <sys/socket.h> //socket
+#include <arpa/inet.h> //inet_addr
+#include <pthread.h>
+#include <time.h>
+
+int socket_desc, client_size,client_sock=0,tid=0; 
+struct sockaddr_in server_addr, client_addr;         //SERVER ADDR will have all the server address
+char server_message[2000],client_message[2000]; // Sending values from the server and receive from the server we need this
+char users[15][2000]={'\0'};
+char candidates[5][2000]={'\0'};
+
+void *fun1(void *arg)
+{
+time_t t=time(NULL);
+
+  //Put the socket into Listening State        
+        if(listen(socket_desc, 1) < 0)   //This listen() call tells the socket to listen to the incoming connections.
+     // The listen() function places all incoming connection into a "backlog queue" until accept() call accepts the connection.
+        {
+                printf("Listening Failed. Error!!!!!\n");
+                return -1;
+        }  
+        
+        //Accept the incoming Connections
+        
+        client_size = sizeof(client_addr);
+
+        client_sock = accept(socket_desc, (struct sockaddr*)&client_addr, &client_size); // heree particular client k liye new socket create kr rhaa ha
+          if (client_sock < 0)
+        {
+                printf("Accept Failed. Error!!!!!!\n");
+                return -1;
+        }
+            tid++; //Client Number/ID  
+        printf("Client # %i Connected with IP: %s and Port No: %i\n",tid,inet_ntoa(client_addr.sin_addr),ntohs(client_addr.sin_port));
+		       //inet_ntoa() function converts the Internet host address in, given in network byte order, to a string in IPv4 dotted-decimal notation
+        
+        
+       memset(server_message,'\0',sizeof(server_message));
+       memset(client_message,'\0',sizeof(client_message));
+           //Receive the message from the client (First: Name & CNIC) 
+        if (recv(client_sock, client_message, sizeof(client_message),0) < 0)
+        {
+                printf("Receive Failed. Error!!!!!\n");
+                return -1;
+        }
+        
+      
+printf("Entered Information of Client %d is: %s\n",tid,client_message);       
+       //Checking if Entered information is in database.
+       int found=0,c2=0,casted=-1;
+      //For checking Name.
+       for(int c=0;c<15;c++)
+       {
+       if(strcmp(users[c],client_message)==0)
+       {
+       found=1;
+       casted=c;// to store index So that one voter can cast only one vote.
+       break;
+       } 
+       }
+       
+       
+        //Send the message back to client. (Either Welcome the client or don't)
+       char sendback[2000];
+       if(found==0) //Client not in database.
+       {
+        strcpy(sendback,"Name and/or CNIC not found in database or vote already casted!\n");
+     if (send(client_sock, sendback, strlen(sendback),0)<0)
+        {
+                printf("Send Failed. Error!!!!!\n");
+                return -1;
+        }
+        pthread_exit(NULL); //Exit now.
+       }
+        
+  //In the case client is found in database.
+  
+strcpy(sendback,"\n                      ~~~~~~ WELCOME VOTER! ~~~~~~~~~~\n\n                    List of Candidates & Poll Symbols: \n");
+         //To send content read from file earlier.
+        for(int pr=0;pr<5;pr++)
+        {
+        strcat(sendback,candidates[pr]);
+        strcat(sendback,"\n");
+        }
+        strcat(sendback,"\nPlease enter the poll symbol only of candidate you wish to vote for: \n");
+        
+          if (send(client_sock, sendback, strlen(sendback),0)<0)
+        {
+                printf("Send Failed. Error!!!!!\n");
+                return -1;
+        }
+        
+        char psymbol[200]={'\0'};
+         if (recv(client_sock, psymbol, sizeof(psymbol),0) < 0)
+        {
+                printf("Receive Failed. Error!!!!!\n");
+                return -1;
+        }
+        
+        printf("Client has decided to vote for: %s\n",psymbol);
+        
+        
+       //Finds corresponding name of candidate whose poll symbol was entered by user.
+   int symbolFound=-1;
+   char *testSymbol;
+   
+   for(int i=0;i<5;i++)
+   {
+   testSymbol=strstr(candidates[i],psymbol);
+   if(testSymbol)
+   {
+   if(strcmp(testSymbol,psymbol)==0)
+   {
+   symbolFound=i;
+   break;
+   }
+   }
+   }
+ 
+ //Sends back message to client (Whether vote has been casted or not)
+         char sendback2[200]={'\0'};
+    
+    if(symbolFound!=-1)
+    {
+    strcpy(sendback2,"Congratulations! Your vote has been casted. Thank You!\n");
+    users[casted][0]='\0'; // So that one voter can cast only one vote.
+    }
+    else
+    strcpy(sendback2,"ERROR! Invalid poll symbol entered.\n");
+    
+           if (send(client_sock, sendback2, strlen(sendback2),0)<0)
+        {
+                printf("Send Failed. Error!!!!!\n");
+                return -1;
+        }
+        
+        FILE *outp=fopen("outputFile.txt","a+");
+        char fullInfo[2000]; //To Write record to output.txt
+        if(symbolFound!=-1)
+        {
+        printf("Symbol Found!\n");
+       strcpy(fullInfo,"-> ");
+       strcat(fullInfo,ctime(&t)); //To save current date and time.
+       strcat(fullInfo,"Voter's Name & CNIC: ");
+       strcat(fullInfo,client_message);
+       strcat(fullInfo," | Voted For: ");
+       strcat(fullInfo,candidates[symbolFound]);
+       strcat(fullInfo,"\n\n");
+       fputs(fullInfo,outp);
+        }
+       else
+       printf("Symbol Not Found!\n");
+       
+        fclose(outp);
+        
+        pthread_exit(NULL); 
+}
+
+int main(void)
+{
+        //Cleaning the Buffers
+        memset(server_message,'\0',sizeof(server_message));
+     //   memset(client_message,'\0',sizeof(client_message));     // Set all bits of the padding field//
+        
+        //Creating Socket        
+        socket_desc = socket(AF_INET, SOCK_STREAM, 0);        
+        if(socket_desc < 0)
+        {
+                printf("Could Not Create Socket. Error!!!!!\n");
+                return -1;
+        }       
+        printf("Socket Created\n");
+        
+        //Binding IP and Port to socket
+        
+        server_addr.sin_family = AF_INET;       /* Address family = Internet */
+        server_addr.sin_port = htons(2000);    // Set port number, using htons function to use proper byte order */
+        server_addr.sin_addr.s_addr = inet_addr("127.0.0.1");    /* Set IP address to localhost */
+		
+		// BINDING FUNCTION      
+ if(bind(socket_desc, (struct sockaddr*)&server_addr, sizeof(server_addr))<0)// Bind the address struct to the socket.  
+ //bind() passes file descriptor, the address structure,and the length of the address structure
+        {
+                printf("Bind Failed. Error!!!!!\n");
+                return -1;
+        }        
+        printf("Bind Done\n");
+
+  
+        //Read from file voters List.
+        FILE*f1=fopen("Voters_List.txt","r");
+       for(int i=0;i<15;i++)
+       {
+        fgets(users[i],255,(FILE*)f1);// reads one line
+       users[i][strlen(users[i])-1]='\0';
+       } 
+ 
+       printf("\nList of Registered Voters: \n");
+       for(int p=0;p<15;p++) //Prints content read from file.
+       printf("%i) %s\n",p+1,users[p]);
+        
+       fclose(f1);
+      
+ 
+       //Read from file Candidates List.
+       FILE*f2=fopen("Candidates_List.txt","r");
+      for(int r=0;r<5;r++)
+      {
+        fgets(candidates[r],255,(FILE*)f2);// reads one line
+       candidates[r][strlen(candidates[r])-1]='\0';
+      } 
+      fclose(f2);
+
+ 
+        while (1){ //So server keeps going.
+ printf("\nListening for Incoming Connections.....(5 allowed at one time)\n");
+        pthread_t thread1,thread2,thread3,thread4,thread5; 
+     
+        int ret1 = pthread_create(&thread1,NULL,fun1,NULL);
+        if(ret1!=0)
+        {
+                printf("Thread 1 Creation Failed\n");
+        }
+
+         int ret2 = pthread_create(&thread2,NULL,fun1,NULL);
+        if(ret2!=0)
+        {
+                printf("Thread 2 Creation Failed\n");
+        }
+        
+        int ret3 = pthread_create(&thread3,NULL,fun1,NULL);
+        if(ret3!=0)
+        {
+                printf("Thread 3 Creation Failed\n");
+        }
+        
+   
+          int ret4 = pthread_create(&thread4,NULL,fun1,NULL);
+        if(ret4!=0)
+        {
+                printf("Thread 4 Creation Failed\n");
+        }
+        
+          
+          int ret5 = pthread_create(&thread5,NULL,fun1,NULL);
+        if(ret5!=0)
+        {
+                printf("Thread 5 Creation Failed\n");
+        }
+        
+        
+        //Suspends the function until the thread completes and return the data
+        pthread_join(thread1,NULL);
+        pthread_join(thread2,NULL);
+        pthread_join(thread3,NULL);
+        pthread_join(thread4,NULL);
+        pthread_join(thread5,NULL);
+      //pthread_exit(NULL);
+
+      }
+       memset(server_message,'\0',sizeof(server_message));
+       memset(client_message,'\0',sizeof(client_message)); 
+        //Closing the Socket
+        
+        close(client_sock);
+        close(socket_desc);
+        return 0;       
+}

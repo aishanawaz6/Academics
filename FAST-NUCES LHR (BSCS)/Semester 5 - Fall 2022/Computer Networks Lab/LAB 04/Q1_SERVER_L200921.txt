@@ -1,0 +1,175 @@
+/*
+        UDP_Server. This Program will will create the Server side for UDP_Socket Programming.
+        It will receive the data from the client and then send some data back to client.
+*/
+
+#include <stdio.h> 
+#include <string.h> 
+#include <sys/socket.h> //// Needed for socket creating and binding
+#include <arpa/inet.h> //inet_addr
+
+char stuRollNumber[50][50];
+int main(void)
+{
+        int socket_desc;
+        struct sockaddr_in server_addr, client_addr;
+        char server_message[2000], client_message[2000]; 
+        int client_struct_length = sizeof(client_addr);
+        
+        //Cleaning the Buffers
+        
+        memset(server_message,'\0',sizeof(server_message));
+        memset(client_message,'\0',sizeof(client_message));
+        
+        //Creating UDP Socket
+        
+        socket_desc = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+        
+        if(socket_desc < 0)
+        {
+                printf("Could Not Create Socket. Error!!!!!\n");
+                return -1;
+        }
+        
+        printf("Socket Created\n");
+        
+        //Binding IP and Port to socket
+        
+        server_addr.sin_family = AF_INET;
+        server_addr.sin_port = htons(2000);
+        server_addr.sin_addr.s_addr = inet_addr("127.0.0.1");  // bind your socket to localhost only, if you want connect any particular ip you should mention it in INET_ADDR.
+        
+        if(bind(socket_desc, (struct sockaddr*)&server_addr, sizeof(server_addr))<0)
+        {
+                printf("Bind Failed. Error!!!!!\n");
+                return -1;
+        }        
+        
+        printf("Bind Done\n");
+        
+        int iter=0;
+        while (1) //To make sure server doesn't take just one client request
+        {
+        printf("Listening for Messages...\n\n");
+        
+        //Receive the message from the client
+        
+        if (recvfrom(socket_desc, client_message, sizeof(client_message), 0, (struct sockaddr*)&client_addr,&client_struct_length) < 0)
+        {
+                printf("Receive Failed. Error!!!!!\n");
+                return -1;
+        }
+  
+        printf("Received Message from IP: %s and Port No: %i\n",inet_ntoa(client_addr.sin_addr),ntohs(client_addr.sin_port));
+
+         // This will seperately store RollNumber entered by client.
+        char StudentRollNumber[50]={'\0'}; 
+        int count=0,i=0;
+        while (client_message[i]!='\0')
+        {
+        if(client_message[i]=='-')
+        count++;
+        if(count<2) //Will store data from client till second '-' found.
+        StudentRollNumber[i]=client_message[i];
+        i++;
+        }
+        StudentRollNumber[i]='\0';
+        //-------------------------------------------------
+
+         //Checking if RollNumber in database.
+          int j=0;
+          int flag=-1; // if flag is -1 , not in database else present.
+          int havetoReorder=-1; // Saves index of deleted roll-number in database.
+        while(j<iter)
+        {
+        if(strcmp(stuRollNumber[j],StudentRollNumber)==0)
+        {
+        flag=0;
+           if(client_message[strlen(client_message)-1]=='O') // For deleting roll-number
+        {
+        stuRollNumber[j][0]='\0';
+        havetoReorder=j;
+        }
+        break;
+        }
+        j++;
+        }
+       //------------------------------------------------------------
+        
+        //To reorder whole Database, Incase a RollNumber has been deleted.
+        if(havetoReorder>=0)
+        {
+        int i=havetoReorder+1;
+        for(;i<iter;i++)
+        strcpy(stuRollNumber[i-1],stuRollNumber[i]);      
+        iter--;
+        }
+        
+        char sendback[2000]={'\0'}; //Sending message back to client.
+         
+        if(client_message[strlen(client_message)-1]=='I')//Checks last character of message entered by client.
+      {
+       printf("Check In!\n");
+      
+       if(flag==0)
+       strcat(sendback,"You are already here.");
+       else
+     {  strcat(sendback,"Welcome Student ");
+     strcat(sendback,StudentRollNumber);
+  
+       strcpy(stuRollNumber[iter],StudentRollNumber);
+       iter++; //Another roll number added.
+      }
+       }
+        else
+        if(client_message[strlen(client_message)-1]=='O')
+        {
+         printf("Check Out!\n");
+         
+
+       
+        if(flag==0)
+       {
+        strcat(sendback,"Good Bye Student ");
+        strcat(sendback,StudentRollNumber);
+        strcat(sendback,"! Have a nice day.");   
+        }
+        else
+        {
+        strcat(sendback,"You didn’t check in today. Contact System Administrator.");
+       }
+        
+        }
+        else
+        if(client_message[strlen(client_message)-1]!='I' && 
+        client_message[strlen(client_message)-1]!='O')
+        strcat(sendback,"Incorrect Format!");
+       
+            //Prints Current Students in database.
+       printf("Current Students in database: \n");
+       int j1=0;
+       while(j1<iter)
+      {
+       printf("%s\n",stuRollNumber[j1]);
+j1++;      
+      }
+        
+        //Send the message back to client
+        
+        strcpy(server_message, sendback);
+        
+        if (sendto(socket_desc, server_message, strlen(server_message), 0, (struct sockaddr*)&client_addr,client_struct_length)<0)
+        {
+                printf("Send Failed. Error!!!!!\n");
+                return -1;
+        }
+        
+        memset(server_message,'\0',sizeof(server_message));
+        memset(client_message,'\0',sizeof(client_message));
+
+      }        
+        //Closing the Socket
+        
+        close(socket_desc);
+        return 0;       
+}

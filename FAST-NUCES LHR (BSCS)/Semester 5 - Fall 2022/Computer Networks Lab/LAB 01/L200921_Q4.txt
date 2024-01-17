@@ -1,0 +1,72 @@
+//L20-0921 CN LAB1 Q4 Sec 5E1
+/*
+Invert all the words in Input_File.txt file which contain one or more vowels and write the
+complete content (with inverted and non-inverted words) into another file which will be
+created at run time. For example ‘computer’ will be inverted to ‘retupmoc’.
+*/
+#include <stdio.h>
+#include <stdlib.h>
+char buffinv[255];
+int invertit(char buff[])
+{
+int len=0;
+while(buff[len]!='\0')
+len++;
+
+
+int i=0;
+while(i<len)
+{
+buffinv[i]=buff[len-i-1];
+i++;
+
+}
+buffinv[i]='\0';
+//printf("%s\n",buffinv);
+
+return 0;
+}
+main ()
+{
+FILE *f1;
+f1=fopen("Input_File.txt","r");
+FILE *f2;
+f2=fopen("Output_File.txt","a");
+char buff[255];
+fscanf(f1, "%s", buff);
+
+while(!feof(f1))
+{
+int i=0;
+int f=-1;
+//printf("%s\n",buff);
+while(buff[i]!='\0')
+{
+if(buff[i]=='a'||buff[i]=='e'||buff[i]=='i'||buff[i]=='o'||buff[i]=='u' || buff[i]=='A'||buff[i]=='E'||buff[i]=='I'||buff[i]=='O'||buff[i]=='U')
+{
+//printf("Vowel Present!\n");
+f=1;
+//Now Intverting the word
+invertit(buff);
+break;
+}
+i++;
+}
+if(f==1)
+fputs(buffinv,f2);
+else
+fputs(buff, f2);
+fputs(" ", f2);
+
+fscanf(f1, "%s", buff);
+
+}
+
+printf("Copied to Output_File.txt sucessfully! \n");
+
+fclose (f1);
+fclose (f2);
+
+
+
+retu

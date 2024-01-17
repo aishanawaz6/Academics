@@ -1,0 +1,32 @@
+//L20-0921 CN LAB1 Q2 Sec 5E1
+//Q2: b) Write only the integers from the Input_File.txt file to another file which will be created at runtime. [3]
+#include <stdio.h>
+#include <stdlib.h>
+
+main ()
+{
+FILE *f1;
+f1=fopen("Input_File.txt","r");
+FILE *f2;
+f2=fopen("Output_File.txt","a");
+
+int c;
+c=getc(f1);
+while(c!=EOF)
+{
+
+if((char)c>='0' && (char)c<='9')
+fputc(c,f2);
+
+c=getc(f1);
+}
+
+printf("Integers from Input_File.txt has been copied to Output_File.txt sucessfully! \n");
+
+fclose (f1);
+fclose (f2);
+
+
+
+return 0;
+}

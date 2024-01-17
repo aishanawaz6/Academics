@@ -1,0 +1,121 @@
+#Aisha Muhammad Nawaz L20-021 BSCS 5E LAB 09 Q2 CN
+#Creating simulator object 
+set ns [new Simulator]  
+
+#creating Two color classes for ns object to distinguish the traffic coming from various sources
+$ns color 0 blue
+$ns color 1 red
+
+#Creating the nam file
+set nf [open out.nam w]      
+#It opens the file 'out.nam' for writing and gives it the file handle 'nf'. 
+$ns namtrace-all $nf
+ 
+ #Finish Procedure  (closes the trace file and starts nam)
+proc finish {} {
+        global ns nf
+        $ns flush-trace
+        close $nf
+        exec nam out.nam & exit 0
+        }
+        
+#1. This network consists of 4 nodes (n0, n1, n2, n3)     
+#Creating Four nodes 
+set n0 [$ns node]
+set n1 [$ns node]
+set n2 [$ns node]
+set n3 [$ns node]
+
+#2.The duplex links between n0 and n2, and n1 and n2 have 2 Mbps of bandwidth and 10 ms of delay.
+#Creating a duplex link between two nodes (connect the nodes n0 and n2 and n1 and n2 with a duplex link with the bandwidth 2Megabit, a delay of 10ms and a DropTail queue)
+$ns duplex-link $n0 $n2 2Mb 10ms DropTail  
+$ns duplex-link-op $n0 $n2 orient left-up
+ 
+$ns duplex-link $n1 $n2 2Mb 10ms DropTail
+$ns duplex-link-op $n1 $n2 orient left-down
+
+#3. The duplex link between n2 and n3 has 1.7 Mbps of bandwidth and 20 ms of delay.
+#Creating a duplex link between two nodes (connect the nodes n2 and n3 with a duplex link with the bandwidth 1.7Megabit, #a delay of 20ms and a DropTail queue)
+$ns duplex-link $n2 $n3 1.7Mb 20ms DropTail
+$ns duplex-link-op $n2 $n3 orient right
+
+#4. Each node uses a DropTail queue, of which the maximum size is 10. You will have to orient the nodes as shown in the diagram below. 
+$ns queue-limit $n0 $n2 10
+$ns queue-limit $n1 $n2 10
+$ns queue-limit $n2 $n3 10
+
+
+#5. A "tcp" agent is attached to n1, and a connection is established to a tcp "sink" agent attached to n3.
+
+#Creating a TCP agent and connecting it to n1 (Basically it defines source node of TCP)
+set tcp0 [new Agent/TCP]
+$tcp0 set fid_ 0
+$ns attach-agent $n1 $tcp0 
+
+#Creating a Sink Agent and attaching it to n3
+set sink0 [new Agent/TCPSink]
+$ns attach-agent $n3 $sink0
+
+
+#Connecting TCP agent with Sink agent
+$ns connect $tcp0 $sink0
+
+#6. A tcp "sink" agent generates and sends ACK packets to the sender (tcp agent) and frees the received packets.
+ 
+#7.	A "udp" agent that is attached to n0 is connected to a "null" agent attached to n3. A "null" agent just frees the packets received.
+
+#Specifying the UDP agent
+set udp0 [new Agent/UDP]
+$udp0 set fid_ 1
+#Attaching the UDP agent with n0
+$ns attach-agent $n0 $udp0
+
+#Specifying the Null agent
+set null0 [new Agent/Null]
+
+#Attaching the NULL agent with n3
+$ns attach-agent $n3 $null0
+
+#Connecting both udp0 and null0 agents for transferring data 
+$ns connect $udp0 $null0
+
+#8.	A "ftp" and a "cbr" traffic generator are attached to "tcp" and "udp" agents respectively, and the "cbr" is configured to generate packets having size of 1 Kbytes at the rate of 100 packets per second. 
+#Specifying the CBR agent to generate the traffic over udp0 agent
+#Creating FTP agent for traffic and attching it to tcp0
+set ftp0 [new Application/FTP]
+$ftp0 attach-agent $tcp0
+
+
+set cbr0 [new Application/Traffic/CBR]
+
+#Each packet having 1000 bytes
+$cbr0 set packetSize_ 1000
+#EAch packet will be generated after 2.5ms i.e., 100 packets per second
+$cbr0 set interval 0.010 
+
+#Attaching cbr0 with udp0
+$cbr0 attach-agent $udp0
+
+
+#9.	FTP will control the traffic automatically according to the throttle mechanism in TCP.
+
+#10.	The traffic flow of UDP must be colored red and traffic flow of TCP must be colored blue.
+#Specifying udp traffic to have red color and udp traffic to have blue color
+#done above
+
+
+#11.	The "cbr" is set to start at 0.1 sec and stop at 4.5 sec,
+#Starting the cbr0 at 0.1 simulaio time
+$ns at 0.1 "$cbr0 start"
+#Stoping the cbr0 at 4.5 simulation time
+$ns at 4.5 "$cbr0 stop"
+
+#12.	 "ftp" is set to start at 0.5 sec and stop at 4.0 sec.
+#Starting  and stopping the FTP Traffic
+$ns at 0.5 "$ftp0 start"
+$ns at 4.0 "$ftp0 stop"
+
+#Calling the finish procedure
+$ns at 5.0 "finish"
+#Run the simulation
+$ns run

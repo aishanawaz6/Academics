@@ -1,0 +1,48 @@
+//L20-0921 CN LAB1 Q3(Fixed) Sec 5E1
+/*
+Write non-alphabet words (non-alphabet word is the one in which all letters are non-
+alphabet e.g., “a#$2#” is not an alphabet word but “$%^&amp;#32” is a non-alphabet word)
+from the Input_File.txt file into another text file which will be created at run-time.*/
+#include <stdio.h>
+#include <stdlib.h>
+
+int main ()
+{
+FILE *f1;
+f1=fopen("Input_File.txt","r");
+FILE *f2;
+f2=fopen("Output_File.txt","a");
+
+char buff[255];
+fscanf(f1,"%s",buff);
+
+while(!feof(f1))
+{
+int flag=0;
+char c;
+int i=0;
+
+while(buff[i]!='\0')
+{
+c=buff[i];
+if (c>='A'  && c<='Z'|| c>='a' && c <='z')
+{
+flag=1;
+break;
+}
+i++;
+}
+if(flag==0)
+{
+fputs(buff,f2);
+fputs(" ",f2);
+}
+fscanf(f1,"%s",buff);
+
+}
+printf("non-alphabet words from Input_File.txt has been copied to Output_File.txt sucessfully! \n");
+
+fclose (f1);
+fclose (f2);
+
+return 0;}

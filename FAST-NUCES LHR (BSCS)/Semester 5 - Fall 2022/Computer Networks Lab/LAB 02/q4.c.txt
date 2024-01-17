@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <stdlib.h>
+main()
+{
+printf("HELLO!\n");
+unsigned int x= 0x76543211;
+
+  char *c = (char*) &x;
+ 
+  printf ("*c is: 0x%x\n", *c);
+  if (*c == 0x11)
+  {
+    printf ("Architecture is little endian. \n");
+  }
+  else
+  {
+     printf ("Architecture is big endian. \n");
+  }
+
+
+return 0;
+}
