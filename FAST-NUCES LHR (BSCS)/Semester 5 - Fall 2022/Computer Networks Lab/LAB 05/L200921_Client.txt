@@ -3,7 +3,7 @@
         It will get some data from user and will send to the server and as a reply from the
         server, it will get its data back.
 */
-
+#include <unistd.h>
 #include <stdio.h>
 #include <string.h>
 #include <sys/socket.h> //socket
@@ -53,9 +53,8 @@ int main(void)
          printf("\n~~~~~ WELCOME TO ONLINE VOTING SYSTEM! ~~~~~\n\n");
         printf("Enter your Name and CNIC number (in the format Name/CNIC number) : \n\n --> ");
       
-        gets(client_message);                                     //One is that gets() will only get character string data. 
-                                                       //		will get only one variable at a time.
-																//  reads characters from stdin and loads them into str
+        gets(client_message);                                
+																
         //Send the message to Server
         
      
@@ -77,8 +76,8 @@ int main(void)
         
         if(!strstr(server_message,"not found")) //If client found in records.
         {
-        char client_message2[2000]={'/0'};     
-        gets(client_message2);  
+        char client_message2[2000];     
+        gets(client_message2);
         
          if(send(socket_desc, client_message2, strlen(client_message2),0) < 0)
         {
