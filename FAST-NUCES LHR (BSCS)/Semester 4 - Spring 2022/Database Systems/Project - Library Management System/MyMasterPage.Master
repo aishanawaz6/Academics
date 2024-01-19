@@ -1,0 +1,69 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MyMasterPage.master.cs" Inherits="Library.MyMasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+     <link href="templatemo_style.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        #logo {
+            height: 52px;
+            margin-left: 465px;
+        }
+    </style>
+</head>
+<body>
+    <img src="Images/Modern%20Public%20Library%20Logo%20Template.png" /><div id="logo">              
+                <h1 style="height: 59px">
+                    <a href="#">~ Welcome to BookLot~</a></h1>
+            </div>
+            &nbsp;<form id="form1" runat="server">
+    <div>
+        <div id="header">
+            <div id="menu">
+                <ul>
+                
+                    <li class="active"><a href="Books.aspx" accesskey="1" title="">Books</a></li>
+                    <li><a href="Search.aspx" accesskey="2" title="">Search Books by Name</a></li>
+                    <li><a href="SearchByGenre.aspx" accesskey="5" title="">Search Books by Genre</a></li>
+                     <li><a href="SearchBestSellingByAuhtor.aspx" accesskey="6" title="">Search Authors's Best Selling </a></li>
+                     <li><a href="SearchAuthorDetails.aspx" accesskey="7" title="">Search Authors's Details </a></li>
+                    <li class="active"><a href="Login.aspx" accesskey="8" title="">Login</a></li>
+                      <li class="active"><a href="SignUp.aspx" accesskey="9" title="">SignUp</a></li>
+                     <li><a href="showMyDetails.aspx" accesskey="10" title="">Show My Details </a></li>
+                    <li><a href="showRecommendations.aspx" accesskey="11" title="">Show Recommendations of User </a></li>
+                    <li><a href="SearchMembershipDetails.aspx" accesskey="12" title="">Search Membership Details of a User </a></li>
+                    <li><a href="ShowFinesHistory.aspx" accesskey="13" title="">Show Fine History of a User </a></li>
+                        <li><a href="SearchLocationDetailsofBook.aspx" accesskey="14" title="">Search Location Details of Book by its name </a></li>
+                     <li><a href="SearchBooksbyType.aspx" accesskey="15" title="">Search Books by Type </a></li>
+                     <li><a href=" searchByLocation.aspx" accesskey="16" title=""> Search Books in a Specific Location </a></li>
+                     <li><a href="  FindIssuedTo.aspx" accesskey="17" title="">  Find Book Issued To whom </a></li>
+                  <li><a href="  searchBookByRatings.aspx" accesskey="18" title=""> Search Books By Ratings </a></li>
+                    <li><a href="searchSuggestionofBook.aspx" accesskey="19" title=""> search all suggestions (by bookname) given of a specific book  by users </a></li>
+                      <li><a href="searchDiscussionRoom.aspx" accesskey="20" title=""> Check if a specific Discussion Room is available </a></li>
+                    <li><a href="Issue.aspx" accesskey="21" title=""> Issue A Book </a></li>
+                     <li><a href="dis.aspx" accesskey="22" title=""> Book a discussion room. </a></li>
+                </ul>
+            </div>
+        </div>
+        <hr />
+        <div id="page">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <!--Footer></!-->
+        <div id="footer">
+            <p>
+                (c) 2017 YourSite.com. All rights reserved. Design by <a href="http://www.nodethirtythree.com/">
+                    NodeThirtyThree</a> and <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.</p>
+        </div>
+    </div>
+    </form>
+
+        
+    </form>
+</body>
+</html>
