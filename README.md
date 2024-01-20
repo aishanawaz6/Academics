@@ -1,7 +1,7 @@
 # Academics: My Computer Science Journey at FAST-NUCES 🎓 
 
 ## 🌟 Overview
-Welcome to the **Academics** repository! This space offers you an inside look into my academic expedition as a Computer Science student at FAST-NUCES. Dive deep into a meticulously curated portfolio that features assignments, self-practice codes, and innovative projects, all reflecting my growth, expertise, and unwavering passion for Computer Science. 🎓
+Welcome to the **Academics** repository! This space offers you an inside look into my academic expedition as a Computer Science student at FAST-NUCES. Dive deep into a meticulously curated portfolio that features assignments, innovative projects, labs and self-practice codes, all reflecting my growth, expertise, and unwavering passion for Computer Science. 🎓
 
 ---
 
