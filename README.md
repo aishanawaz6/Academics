@@ -1,12 +1,12 @@
-# Academics: My Computer Science Journey at FAST-NUCES 🎓 
+# 🎓 Academics: My Computer Science Journey at FAST-NUCES 🌟 
 
-## 🌟 Overview
-Welcome to the **Academics** repository! This space offers you an inside look into my academic expedition as a Computer Science student at FAST-NUCES. Dive deep into a meticulously curated portfolio that features assignments, innovative projects, labs and self-practice codes, all reflecting my growth, expertise, and unwavering passion for Computer Science. 🎓
+## Overview
+Welcome to the **Academics** repository, offering an inside look into my academic expedition as a Computer Science student at FAST-NUCES. Delve deep into a meticulously curated portfolio featuring assignments, innovative projects, labs, self-practice codes, and quizzes. Each element reflects my growth, expertise, and unwavering passion for Computer Science. 🎓
 
 ---
 
 ## 📂 Assignments
-Navigate to the `Assignments` directory to explore a thoughtfully curated collection of my assignments, meticulously organized by course subjects. Each assignment serves as a testament to my analytical prowess, problem-solving acumen, and comprehensive understanding of theoretical concepts.
+Navigate to the `Assignments` directory to explore a thoughtfully curated collection of my assignments, meticulously organized by course subjects. Each assignment is a testament to my analytical prowess, problem-solving acumen, and comprehensive understanding of theoretical concepts.
 
 ---
 
@@ -16,8 +16,7 @@ Venture into the `Projects` directory to witness my semester-long projects and c
 ---
 
 ## 🧪 Labs
-
-Step into the heart of my academic adventure at FAST-NUCES, where the `Labs` section is a lively canvas of hands-on exploration, blending theory and practice. Semester-wise lab assignments are more than tasks; they reveal my journey of learning, embracing diverse tools and technologies to solve real-world challenges. This section is a testament to my commitment not just to understand the 'what' and 'why,' but to truly master the 'how' in the compassionate world of computer science. Join me on this meaningful journey where every line of code tells a story! 🌟
+Step into the heart of my academic adventure at FAST-NUCES with the `Labs` section. This vibrant canvas blends theory and practice, portraying hands-on exploration. Semester-wise lab assignments reveal my journey of learning, embracing diverse tools and technologies to solve real-world challenges. Join me on this meaningful journey where every line of code tells a story! 🌟
 
 ---
 
@@ -26,5 +25,10 @@ Embark on a coding odyssey within the `Self-Practice-Codes` directory, where you
 
 ---
 
+## 📝 Quizzes
+Step inside the `Quizzes` section to witness my expedition through diverse Computer Science topics. These quizzes serve as a testament to my comprehensive knowledge and intellectual prowess. Dive in and explore the depth of my understanding in these captivating assessments. 🧠
+
+---
+
 ## 🙏 Gratitude
-Thank you for taking the time to explore my **Academics** repository. Your interest and engagement resonate deeply with me, and I genuinely hope you find my coursework both enlightening and inspirational. Should you have any inquiries, feedback, or collaborative opportunities, please feel free to reach out. Together, let's embark on a journey to shape the future landscape of Computer Science! 🌟
+Thank you for exploring my **Academics** repository. Your interest resonates deeply with me, and I hope you find my coursework enlightening and inspirational. For inquiries, feedback, or collaborative opportunities, feel free to reach out. Together, let's shape the future landscape of Computer Science! 🌟
