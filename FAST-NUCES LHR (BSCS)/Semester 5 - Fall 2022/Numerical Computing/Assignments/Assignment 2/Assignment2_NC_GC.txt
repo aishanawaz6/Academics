@@ -1,0 +1,16 @@
+Dear students
+Perform the following task:
+
+
+Part (1): Write Mathematica code for Bisection, Regular False and Newton Raphson Methods (write your own code as detailed in the classroom) and solve the attached test problems through mentioned methods.
+
+Part (2): Also, compute solutions for the following problems through built-in routines available in Mathematica and compare your results.
+
+Part (3): Plot the given functions and visualize roots.
+
+
+
+Note: 
+(i) Apply mentioned methods to determine the roots with an accuracy of 10-5 in each problem. Also,
+(ii) After completion of assignment upload your Mathematica Notebook in google class room. No hard copy is required for this assignment.
+(iii) All the details should be write in comment form in Mathematica note book to describe your code steps.
