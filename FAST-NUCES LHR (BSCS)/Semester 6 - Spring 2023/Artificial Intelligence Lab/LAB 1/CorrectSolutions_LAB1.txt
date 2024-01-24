@@ -1,0 +1,94 @@
+# Q1: 9.1 Reverse String (5 Marks)
+#Write a function that reverses a string. 
+#The input string is given as an array of characters. 
+#You can use Python list to create the array of characters. 
+#Do not allocate extra space for another array, you must do this reversal by modifying the input array in place with O(1) extra memory.
+
+#Example 1: Input: ["h","e","l","l","o"] Output: ["o","l","l","e","h"]
+#Example 2: Input: ["H","a","n","n","a","h"] Output: ["h","a","n","n","a","H"]
+
+#SOLUTION : 
+
+#function that reverses a string. (Using the concept of slicing [::-1])
+def reverseIt(theList):
+  theList[::1]=theList[::-1]
+  return theList
+
+
+mylist=[]# Creating the array of characters. 
+n=int(input("Please enter number of characters in your list: "))
+print("NOW PLEASE ENTER the characters ONE BY ONE")
+
+for i in range (0,n):
+  inp=input("Enter element: ") 
+  mylist.append(inp)
+
+print("Input: ",list(mylist))
+reverseIt(mylist)
+print("Output:",mylist)
+
+
+------------------------------------------------------------------------------------------------------------->
+
+#9.2 Valid Palindrome (10 Marks) Given a string s, determine if it is a palindrome,
+#considering only alphanumeric characters and ignoring cases. 
+#Refer to this link to learn about Python string functions which might come handy in this task.
+
+
+# TAKING STRING AS INPUT FROM USER
+orgS=input("Please enter a string: ")
+s=orgS # TO RETAIN ORGINAL FORM 
+print("YOU ENTERED:",s)
+
+#Removing special characters
+s=s.replace(" ","")
+s=s.replace(",","")
+s=s.replace(".","")
+s=s.replace(":","")
+s=s.replace("'","")
+
+print("Without Special Characters: ",s)
+s=s.lower()
+print("In lowerCase: ",s)
+
+
+# FUNCTION TO CHECK WHETHER IT IS PALINDROME. (USES SLICING CONCEPT)
+def isItPal(aStr):
+  if aStr[::1]==aStr[::-1]:
+    return True
+  else:
+    return False
+
+print("\n")
+
+print("Input: s=\"",orgS,"\"",sep="")
+if(isItPal(s)):
+  print("Output: true")
+  print("Explanation: \"",s,"\" is a palindrome.",sep="")
+else:
+  print("Output: false")
+  print("Explanation: \"",s,"\" is not a palindrome.",sep="")
+
+
+
+------------------------------------------------------------------------------------------------------------->
+
+
+
+#QUESTION 3: Sqrt(x) without any built-in methods (10 Marks)
+#Given a non negative integer x, compute and return the square root of x.
+#Since the return type is an integer, the decimal digits are truncated, and only the integer part of the result is returned.
+
+#Example 1: Input: x = 4 Output: 2
+#Example 2: Input: x = 8 Output: 2
+#Explanation: The square root of 8 is 2.82842…, and since the decimal part is truncated, 2 is returned.
+
+def getSqrt(x):
+  if (int(x)<0):
+    return "ERROR COMPUTNG SQUARE ROOT! INPUT NOT A NON NEGATIVE INTEGER."
+  else:
+    return int(int(x)**(1/2))
+
+inpt=input("PLEASE ENTER  A NON NEGATIVE INTEGER: ")
+print("Input: x =",inpt)
+print("Output: ",getSqrt(inpt))

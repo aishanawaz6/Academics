@@ -1,0 +1,169 @@
+#20L-0921 AISHA MUHAMMAD NAWAZ BSCS 6E1 AI LAB 6 PART 2
+# Implementation of A* Search Problem Statement:
+# Your task is to implement a cube solver using A* Algorithm. This time there are two types of walls,
+# short walls and high walls. The user can jump over short walls. Your algorithm should return the path
+# to the goal state, prioritizing the path with a minimum number of short walls or no walls. To
+# represent the cube, you can use 0, 1, and 2. Where 0 indicates no wall, 1 corresponds to a high wall,
+# and 2 corresponds to a short wall. Your implementation should be able to read the cube from a text file.
+
+#NOTE: Assuming Format of file is as follows:
+# 77
+# S 0 2 0 2 0 0
+# 2 0 0 0 0 2 2
+# 0 0 0 2 1 0 0
+# 2 0 1 2 2 1 2
+# 0 0 0 1 0 1 0
+# 0 0 2 2 0 2 2
+# 0 2 0 0 0 2 G
+
+rows=0
+columns=0
+#Your implementation should be able to read the cube from a text file.
+def readCube(filename):
+  
+  file=open(filename,"r")
+  global rows
+  global columns
+  
+  rows=int(file.read(1))
+  columns=int(file.read(1))
+  
+  print('\nCUBE IS ----> ')
+  print("COLOUMNS: ",columns," ROWS: ",rows)
+  
+  myArr=[]
+  for i in range(rows):
+    file.read(1) #Reads '\n' i.e end of line 
+    myCol=[]
+    for j in range(columns):
+       ch=file.read(1) #Reading character by character from file
+       if(j<columns-1):
+        file.read(1) #Reads ' ' i.e space
+       myCol.append(ch)
+    myArr.append(myCol)
+  
+  file.close()
+  
+  printMyArr(myArr)
+  return myArr
+
+def printMyArr(myArr):
+  global rows
+  global columns
+  for i in range (rows):
+      print(myArr[i])
+
+def getMyPath(myPath,r,c,nodeDef):
+  # Your algorithm should return the path 
+  # to the goal state, prioritizing the path with a minimum number of short walls or no walls.
+  path=[(r,c)] #Initially only (r,c)
+  flag=1
+
+  #Backtracking the path from (r,c)
+
+  while(flag):
+   for key,value in myPath.items(): #Search path to find (r,c) and use its key to find parent's (r,c)
+
+     if([r,c] in value):
+      path.append(nodeDef[key]) #Append (r,c)'s parent's row and coloumn values 
+      r=nodeDef[key][0] #now in next iteration find this parent's parent (r,c) value i.e find grandparent
+      c=nodeDef[key][1]
+
+      if(r==0 and c==0): #if while backtracking , (0,0) i.e root reached, stop.
+        flag=0
+        break
+     
+  path.reverse() #Reversing the path found through backtracking.
+  return path
+
+def getHF(myArr,r,c,gn): 
+
+    #Calculating (r,c)'s heuristic function value
+    # Such that hn is count of short walls & hn2 is count of no walls
+    hn,hn2=0,0
+    if(r+1<rows and myArr[r+1][c]=='2'):
+        hn=hn+1
+    if(c+1<columns and myArr[r][c+1]=='2'):
+        hn=hn+1
+    if(r-1>=0 and myArr[r-1][c]=='2'):
+        hn=hn+1
+    if(c-1>=0 and myArr[r][c-1]=='2'):
+        hn=hn+1
+
+    if(r+1<rows and myArr[r+1][c]=='0'):
+        hn2=hn2+1
+    if(c+1<columns and myArr[r][c+1]=='0'):
+        hn2=hn2+1
+    if(r-1>=0 and myArr[r-1][c]=='0'):
+        hn2=hn2+1
+    if(c-1>=0 and myArr[r][c-1]=='0'):
+        hn2=hn2+1      
+    hn=4-(hn2+hn)
+    return hn+gn
+
+def ApplyAstar(myArr):
+    print("\nAPPLYING A*..\n")
+    global rows
+    global columns
+
+    from queue import PriorityQueue
+    q=PriorityQueue() #Basically Open list
+
+    nodeId=0   
+    nodeDef={}
+    myPath={}
+    
+    visited=[[ False for i in range(rows)] for i in range(columns)] #Basically close list
+    
+    hF=getHF(myArr,0,0,0)
+    q.put((hF,0,[0,0])) #index 0 has heuristic function value, index 1 has gn value, indx 2 has pair (r,c)
+
+    while (not q.empty()):
+      node=q.get()
+      r=node[2][0]
+      c=node[2][1]
+  
+      visited[r][c]=True
+  
+      print("-->> ",'(',r, ',',c,')')
+      nodeDef[nodeId]=([r,c])
+      
+      if(myArr[r][c]=='G'):
+        print("                    ~~~~~~~~~~~~~~  GOAL STATE FOUND!  ~~~~~~~~~~~~~~~~           ")
+        return getMyPath(myPath,r,c,nodeDef) 
+    
+      myPath[nodeId]=['Children are: ']
+
+      #Up
+      newR,newC=r-1,c
+      if(not(newR<0 or newC<0 or newR>=rows or newC>=columns or myArr[newR][newC]=='1' or visited[newR][newC])):   
+       hF=getHF(myArr,newR,newC,node[1]+1) #node[1]+1 means this node's gn value is parent's gn value +1
+       q.put((hF,node[1]+1,[newR,newC])) # inserting hF , gn & (r,c)
+       myPath[nodeId].append([newR,newC])
+      
+      #Down
+      newR,newC=r+1,c
+      if(not(newR<0 or newC<0 or newR>=rows or newC>=columns or myArr[newR][newC]=='1' or visited[newR][newC])):
+       hF=getHF(myArr,newR,newC,node[1]+1)
+       q.put((hF,node[1]+1,[newR,newC]))   
+       myPath[nodeId].append([newR,newC])
+      
+      #Left
+      newR,newC=r,c-1
+      if(not(newR<0 or newC<0 or newR>=rows or newC>=columns or myArr[newR][newC]=='1' or visited[newR][newC])):
+       hF=getHF(myArr,newR,newC,node[1]+1)
+       q.put((hF,node[1]+1,[newR,newC]))  
+       myPath[nodeId].append([newR,newC])
+      
+      #Right
+      newR,newC=r,c+1
+      if(not(newR<0 or newC<0 or newR>=rows or newC>=columns or myArr[newR][newC]=='1' or visited[newR][newC])):
+       hF=getHF(myArr,newR,newC,node[1]+1)
+       q.put((hF,node[1]+1,[newR,newC]))    
+       myPath[nodeId].append([newR,newC])
+       
+      nodeId=nodeId+1
+    return -1
+
+path3=ApplyAstar(readCube("Cube2.txt"))
+print('PATH IS : \n',path3)

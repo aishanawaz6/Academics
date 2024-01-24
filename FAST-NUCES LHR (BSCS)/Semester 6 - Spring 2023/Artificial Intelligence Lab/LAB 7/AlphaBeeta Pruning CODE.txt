@@ -1,0 +1,23 @@
+def alpha_beta_pruning(node, alpha, beta):
+    if node.is_terminal():
+        return node.value
+
+    if node.is_maximizing():
+        max_value = float('-inf')
+        for child in node.children():
+            value = alpha_beta_pruning(child, alpha, beta)
+            max_value = max(max_value, value)
+            alpha = max(alpha, max_value)
+            if beta <= alpha:
+                break
+        return max_value
+
+    else:  # Minimizing node
+        min_value = float('inf')
+        for child in node.children():
+            value = alpha_beta_pruning(child, alpha, beta)
+            min_value = min(min_value, value)
+            beta = min(beta, min_value)
+            if beta <= alpha:
+                break
+        return min_value
