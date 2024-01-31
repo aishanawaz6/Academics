@@ -1,0 +1,22 @@
+Assume that there is a huge number of employees working in an organization and the organization wants to digitalize their data. write a program that stores the emp_id, emp_name and the salary of the employee. Choose the most suitable data structure. Your task is to display the details of an employee with highest and lowest salary. 
+Create a function showData which display all the records in sorted order with respect to salary. It is upto you, whether you create an additional data structure for this task or sort the data in the existing data structure.
+If the data is stored in a data structure as follows:
+Ali		Arif		Asif		Atif
+7986		9854		8342		6587
+80000    	70000		85000		75000
+
+Output:
+Highest Salaried employee:
+Asif
+8342
+85000
+
+Least Salaried employee:
+Arif
+9854
+70000
+
+employees data:
+Asif	Ali 	Atif	Arif
+8342 	7986	6587	9854
+85000	80000	75000	70000
