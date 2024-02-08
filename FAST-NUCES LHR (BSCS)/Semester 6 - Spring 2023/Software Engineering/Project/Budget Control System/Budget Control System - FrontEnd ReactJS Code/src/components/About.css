@@ -1,0 +1,192 @@
+.App {
+    text-align: center;
+    position: relative;
+  }
+  
+  .App-logo {
+    height: 40vmin;
+    pointer-events: none;
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
+  }
+  
+  .App-header {
+    background-color:  #ddcdf2;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  .App-link {
+    color: #61dafb;
+  }
+  
+  @keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+  
+    to {
+        transform: rotate(360deg);
+    }
+  }
+  
+  body {
+    background-color: #ddcdf2;
+  }
+  
+  h1 {
+    font-size: 25px;
+    font-family: 'Century Schoolbook';
+    color: palevioletred;
+    border: thin;
+    text-align: center;
+  }
+  
+  h2 {
+    font-size: 22px;
+    font-family: 'Century Schoolbook';
+    font-style: italic;
+    color: palevioletred;
+    border: thin;
+    text-align: center;
+  }
+  b {
+    font-size: 18px;
+    font-family: 'Century Schoolbook';
+    color: mediumvioletred;
+    border: thin;
+    text-align: center;
+  }
+  
+  .button {
+    display: flex;
+  }
+  
+  .box {
+    width: 35px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 700;
+    color: purple;
+    transition: all .8s;
+    cursor: pointer;
+    position: relative;
+    background: white;
+    overflow: hidden;
+  }
+  
+    .box:before {
+        content: "C";
+        position: absolute;
+        top: 0;
+        background: white;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: translateY(100%);
+        transition: transform .4s;
+    }
+  
+    .box:nth-child(2)::before {
+        transform: translateY(-100%);
+        content: 'O';
+    }
+  
+    .box:nth-child(3)::before {
+        content: 'N';
+    }
+  
+    .box:nth-child(4)::before {
+        transform: translateY(-100%);
+        content: 'T';
+    }
+  
+    .box:nth-child(5)::before {
+        content: 'R';
+    }
+  
+    .box:nth-child(6)::before {
+        content: 'O';
+    }
+  
+    .box:nth-child(7)::before {
+        content: 'L';
+    }
+  
+    .box:nth-child(8)::before {
+        content: 'L';
+    }
+  
+    .box:nth-child(9)::before {
+        content: 'E';
+    }
+  
+    .box:nth-child(10)::before {
+        content: 'D';
+    }
+  
+    .box:nth-child(11)::before {
+        content: '!';
+    }
+  
+  .button:hover .box:before {
+    transform: translateY(0);
+  }
+  
+  button {
+    appearance: none;
+    background-color: transparent;
+    border: 0.125em solid white;
+    border-radius: 0.9375em;
+    box-sizing: border-box;
+    color: mediumvioletred;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Century Schoolbook';
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0;
+    min-height: 3.75em;
+    min-width: 0;
+    outline: none;
+    padding: 1em 2.3em;
+    text-align: center;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    will-change: transform;
+  }
+  
+    button:disabled {
+        pointer-events: none;
+    }
+  
+    button:hover {
+        color: #fff;
+        background-color: #1A1A1A;
+        box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+        transform: translateY(-2px);
+    }
+  
+    button:active {
+        box-shadow: none;
+        transform: translateY(0);
+    }
+  

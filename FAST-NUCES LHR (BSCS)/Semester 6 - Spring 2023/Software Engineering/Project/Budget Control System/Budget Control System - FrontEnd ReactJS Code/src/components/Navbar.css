@@ -1,0 +1,258 @@
+nav{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color:rgb(55, 30, 97);
+    padding: 20px 80px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.6);
+    min-height: 100px;
+}
+#navbar{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+#navbar li{
+    list-style: none;
+    padding:0 20px;
+    position: relative;
+}
+#navbar li a{
+    text-decoration: none;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color:white;
+    transition: 0.3s ease-in-out;
+}
+#navbar li a:hover,
+#navbar li a.active{
+    color:#ddcdf2;
+}
+#navbar li a:hover::after,
+#navbar li a.active::after{
+    content:"";
+    width:30%;
+    height:2px;
+    background:#ddcdf2;
+    position: absolute;
+    bottom:-4px;
+    left:20px;
+}
+.card {
+    position: relative;
+    width: 220px;
+    height: 320px;
+    background: rgb(55, 30, 97);;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 15px;
+    cursor: pointer;
+    color:whitesmoke
+  }
+  .card1 {
+    position: relative;
+    width: 220px;
+    height: 320px;
+    background: rgb(55, 30, 97);;
+    display: inline-flex;
+    margin-left: 15%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 15px;
+    cursor: pointer;
+    color:whitesmoke;
+    text-align: center;
+  }
+  .card2 {
+    position: relative;
+    width: 220px;
+    height: 320px;
+    background: rgb(55, 30, 97);;
+    display: inline-flex;
+    margin-left: 13%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 15px;
+    cursor: pointer;
+    color:whitesmoke;
+    text-align: center;
+  }
+  .card3 {
+    position: relative;
+    width: 220px;
+    height: 320px;
+    background: rgb(55, 30, 97);;
+    display: flex;
+    /*margin-left: 70%;*/
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 15px;
+    cursor: pointer;
+  }
+  
+  .card::before,
+  .card::after {
+    position: absolute;
+    content: "";
+    width: 20%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    font-weight: bold;
+    background-color: #bc95ee;
+    transition: all 0.5s;
+  }
+  
+  .card::before {
+    top: 0;
+    right: 0;
+    border-radius: 0 15px 0 100%;
+  }
+  
+  .card::after {
+    bottom: 0;
+    left: 0;
+    border-radius: 0 100%  0 15px;
+  }
+  
+  .card:hover::before,
+  .card:hover:after {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    transition: all 0.5s;
+  }
+  
+  .card:hover:after {
+    content: "BALANCE";
+  }
+  .card1::before,
+  .card1::after {
+    position: absolute;
+    content: "";
+    width: 20%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    font-weight: bold;
+    background-color: #bc95ee;
+    transition: all 0.5s;
+  }
+  
+  .card1::before {
+    top: 0;
+    right: 0;
+    border-radius: 0 15px 0 100%;
+  }
+  
+  .card1::after {
+    bottom: 0;
+    left: 0;
+    border-radius: 0 100%  0 15px;
+  }
+  
+  .card1:hover::before,
+  .card1:hover:after {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    transition: all 0.5s;
+  }
+  
+  .card1:hover:after {
+    content: "Track your money, achieve your goals";
+  }
+  .card2::before,
+  .card2::after {
+    position: absolute;
+    content: "";
+    width: 20%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    font-weight: bold;
+    background-color: #bc95ee;
+    transition: all 0.5s;
+  }
+  
+  .card2::before {
+    top: 0;
+    right: 0;
+    border-radius: 0 15px 0 100%;
+  }
+  
+  .card2::after {
+    bottom: 0;
+    left: 0;
+    border-radius: 0 100%  0 15px;
+  }
+  
+  .card2:hover::before,
+  .card2:hover:after {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    transition: all 0.5s;
+  }
+  
+  .card2:hover:after {
+    content: "Get Summary and Suggestion on Expenditure";
+  }
+
+  .Fa{
+    padding: 20px;
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    margin-left: 320px;
+    margin-top: 90px;
+    display: flex;
+    
+    
+  }
+  .fa:hover {
+    opacity: 0.7;
+  }
+.facebook{
+  background: #3B5998;
+  color: white;
+}
+.instagram{
+  background-color: white;
+  margin-left: 40px;
+  
+
+}
+.twitter{
+  background: #55ACEE;
+  color: white;
+  margin-left: 40px;
+  
+}
+
+  
+
+  
+
+  
+
+  
