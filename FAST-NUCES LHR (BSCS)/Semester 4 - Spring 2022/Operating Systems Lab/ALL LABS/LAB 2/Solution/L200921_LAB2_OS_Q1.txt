@@ -1,0 +1,1 @@
+fork() system call is used to create a child process from a parent process. The child is very much alike its parent but with a few differnces. The child has its own unique process id etc. When the fork system call is succesful it returns zero to child and the child's process Id to parent.

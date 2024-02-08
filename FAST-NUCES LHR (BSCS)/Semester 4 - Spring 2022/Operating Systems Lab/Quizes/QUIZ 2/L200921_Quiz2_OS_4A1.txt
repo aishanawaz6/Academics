@@ -1,0 +1,102 @@
+//Aisha Muhammad Nawaz 20L-0921 BSCS 4A1 OS LAB QUIZ # 2 (27th May 2022)
+/*
+Question:
+Consider a situation where we have a file shared between many people. 
+If one of the people tries editing the file, no other person should be reading or writing at the same time, (mutex)
+otherwise, changes will not be visible to him/her.
+However, if some person is reading the file, then others may read it at the same time.
+
+Precisely in OS we call this situation as the readers-writers problem
+
+Create 6 threads, 3 threads are for reading purposes and 3 of them are for writing purposes. 
+Execute the all writer threads first before allowing the reader threads to start work.
+
+The output could be follows as:
+
+Thread 1: Hello, this is writer thread
+Thread 2: Hello, this is writer thread
+Thread 3: Hello, this is writer thread
+Thread 4: Hello, this is reader thread
+Thread 5: Hello, this is reader thread
+Thread 6: Hello, this is reader thread
+
+Note: The program is to be write only using semaphores and threads. Your thread numbers may vary. 
+
+*/
+#include <iostream>
+#include <pthread.h>
+#include <semaphore.h>
+#include <sys/sem.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <sys/types.h>
+using namespace std;
+sem_t s,mutex,wrt,rd;
+int readers=0;
+int writers=0;
+void* read(void*para)
+{
+sem_wait(&rd);
+sem_wait(&mutex);
+readers++;
+if(readers==1)
+sem_wait(&wrt);
+
+sem_post(&mutex); //Allowing other readers to read too
+sem_post(&rd);
+//critical section
+cout<<"Hello, this is reader thread"<<" with thread id: "<<*(long*)para<<endl;
+
+readers--;
+if (readers==0)
+sem_post(&wrt);
+
+return para;
+}
+
+void* write(void*para)
+{
+
+sem_wait(&wrt);
+writers++;
+sem_wait(&mutex);
+if(writers==1)
+sem_wait(&rd);
+
+//critical section
+cout<<"Hello, this is writer thread"<<" with thread id: "<<*(long*)para <<endl;
+
+writers--;
+if(writers==0)
+sem_post(&rd);
+
+sem_post(&mutex);
+
+sem_post(&wrt);
+
+return para;
+}
+int main ()
+{
+sem_init(&mutex,0,1);
+sem_init(&s,0,0);
+sem_init(&wrt,0,1);
+sem_init(&rd,0,1);
+pthread_t id,id2,id3,id4,id5,id6;
+
+
+pthread_create(&id4,NULL,write,(void*)&id4);
+pthread_create(&id5,NULL,write,(void*)&id5);
+pthread_create(&id6,NULL,write,(void*)&id6);
+
+pthread_create(&id,NULL,read,(void*)&id);
+pthread_create(&id2,NULL,read,(void*)&id2);
+pthread_create(&id3,NULL,read,(void*)&id3);
+
+
+
+
+
+pthread_exit(0);
+return 0;
+}
