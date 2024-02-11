@@ -81,6 +81,10 @@ The repository is organized into semesters, each containing relevant coursework 
 - **Software Engineering**
   - Principles and practices of software engineering.
 
+- **Advance Database Concepts**
+  - Specialized training in optimizing database storage, design, and queries, covering advanced topics such as physical storage, query optimization, transactions, concurrency control, and recovery techniques.
+
+
 ### Semester 7 - Fall 2023
 
 - **Data Science**
