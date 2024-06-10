@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Results</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        img { width: 30%; margin: 10px; border-radius: 8px; }
+        .container { padding: 20px; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Image Processing Results</h1>
+        <h3>Original Color Image</h3>
+        <img src="{{ url_for('static', filename='uploads/' ~ color_filename) }}" alt="Color Image">
+        <h3>Original Grayscale Image</h3>
+        <img src="{{ url_for('static', filename='uploads/' ~ gray_filename) }}" alt="Grayscale Image">
+        <h3>Pseudo-Colored Image</h3>
+        <img src="{{ url_for('static', filename='results/' ~ result_filename) }}" alt="Result Image">
+    </div>
+</body>
+</html>

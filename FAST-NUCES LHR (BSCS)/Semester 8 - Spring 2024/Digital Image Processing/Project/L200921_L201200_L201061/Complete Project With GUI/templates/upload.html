@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ColorizeMe</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .navbar { background-color: #333; overflow: hidden; text-align: center; padding: 14px 0; }
+        .navbar h1 { color: #f2f2f2; margin: 0; }
+        .button { background-color: #4CAF50; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 20px 2px; cursor: pointer; border: none; border-radius: 4px; }
+        .container { padding: 20px; text-align: center; }
+        input[type="file"] {
+            margin-top: 25px;
+            display: block;
+            width: 80%;
+            margin-left: 650px;
+            margin-right: 100px;
+        }
+        .file-input-label {
+            display: block;
+            margin-top: 30px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>ColorizeMe</h1>
+    </div>
+    <div class="container">
+        <h2>Upload Color and Grayscale Images</h2>
+        <form method="post" enctype="multipart/form-data">
+            <label class="file-input-label" for="color_image">Upload Colored Reference Image:</label>
+            <input type="file" id="color_image" name="color_image" required>
+
+            <label class="file-input-label" for="gray_image">Upload Grayscale Image:</label>
+            <input type="file" id="gray_image" name="gray_image" required>
+
+            <button class="button" type="submit">Upload Images</button>
+        </form>
+    </div>
+</body>
+</html>

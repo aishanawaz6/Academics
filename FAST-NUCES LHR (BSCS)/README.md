@@ -95,7 +95,8 @@ The repository is organized into semesters, each containing relevant coursework 
 
 ### Semester 8 - Spring 2024
 
-- *Content to be added*
+- **Digita Image Processing**
+  -The Digital Image Processing (DIP) Fundamentals course, an elective for undergraduate and graduate students in Computer Science and Engineering, covers breadth knowledge with moderate detail on various algorithms and techniques, combining ideas from Machine Vision/Intelligence, statistics, and computer graphics, and expects a reasonable background in Calculus, Linear Algebra, and Programming.
 
 ## Usage
 
