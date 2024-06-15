@@ -1,0 +1,20 @@
+function getDistance(lat, lon, lat2, lon2) { 
+    // This function returns answer in meters
+    const EARTHRADIUS = 6371000; 
+
+    const degreesToRadians = (degrees) => degrees * (Math.PI / 180);
+
+    const radLat = degreesToRadians(lat);
+    const radLat2 = degreesToRadians(lat2);
+
+    const deltaLat = degreesToRadians(lat2 - lat);
+    const deltaLon = degreesToRadians(lon2 - lon);
+
+    const a = Math.pow(Math.sin(deltaLat / 2), 2) +
+              Math.cos(radLat) * Math.cos(radLat2) * 
+              Math.pow(Math.sin(deltaLon / 2), 2);
+
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+    return EARTHRADIUS * c; 
+}

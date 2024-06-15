@@ -1,0 +1,7 @@
+SELECT
+    lat,lng,count,
+    udf.getDistance(lat, lng, 74.3023911, 31.481365) AS DistancefromDestinationInMeters
+INTO
+    [aishablobstor]
+FROM
+    [aishaHub]
