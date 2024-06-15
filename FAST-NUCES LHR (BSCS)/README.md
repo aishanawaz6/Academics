@@ -95,8 +95,10 @@ The repository is organized into semesters, each containing relevant coursework 
 
 ### Semester 8 - Spring 2024
 
-- **Digita Image Processing**
-  -The Digital Image Processing (DIP) Fundamentals course, an elective for undergraduate and graduate students in Computer Science and Engineering, covers breadth knowledge with moderate detail on various algorithms and techniques, combining ideas from Machine Vision/Intelligence, statistics, and computer graphics, and expects a reasonable background in Calculus, Linear Algebra, and Programming.
+- **Digital Image Processing**  
+  - The Digital Image Processing (DIP) Fundamentals course, an elective for undergraduate and graduate students in Computer Science and Engineering, covers breadth knowledge with moderate detail on various algorithms and techniques, combining ideas from Machine Vision/Intelligence, statistics, and computer graphics, and expects a reasonable background in Calculus, Linear Algebra, and Programming.  
+- **Mining Massive Datasets**  
+  - The course focuses on scalable data analysis techniques using PySpark and MapReduce for processing and extracting insights from large-scale datasets.  
 
 ## Usage
 

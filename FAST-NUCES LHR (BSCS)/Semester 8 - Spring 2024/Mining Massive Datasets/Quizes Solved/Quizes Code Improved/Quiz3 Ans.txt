@@ -1,0 +1,21 @@
+Question 1 (a): Generate Signature Matrix
+                 Docs
+
+Permuations      D1 D2 D3 D4 
+P1               1  6  1  1
+P2               1  2  1  1
+P3               2  3  2  2
+P4               1  4  1  1
+
+b) Jaccard Sim (Boolean Matrix)
+i. 1/5 
+ii. 4/5
+iii. 4/5
+
+c) Jaccard Sim (Signatures)
+i. 0/4
+ii. 4/4 =1
+iii. 4/1 =1
+
+d) Similar Documents have similar signatures
+e) No its very ineffecient, Permuatating even once is prohibited. We use alternative method of hashing row index

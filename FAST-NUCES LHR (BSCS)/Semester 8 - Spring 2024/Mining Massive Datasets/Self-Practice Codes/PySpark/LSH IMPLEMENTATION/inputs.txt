@@ -1,0 +1,3 @@
+D1,Pretend this is a very huge document about data science and machine learning
+D2,Pretend this is another very huge document about big data and its applications
+D3,Mining of Massive Datasets is a course focusing on techniques for handling large-scale data

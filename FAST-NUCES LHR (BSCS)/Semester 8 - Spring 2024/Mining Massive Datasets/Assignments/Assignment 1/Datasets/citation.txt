@@ -1,0 +1,200 @@
+#*Automated Deduction in Geometry #@Hoon Hong,Dongming Wang#t2006#index0
+
+#*A+ Certification Core Hardware (Text & Lab Manual)#@Charles J. Brooks#t2003#index1
+
+#*Performance engineering in industry: current practices and adoption challenges#@Ahmed Hassan,Parminder Flora#t2007#index2
+
+#*Dude, You Can Do It! How to Build a Sweeet PC#@Darrel Creacy,Carlito Vicencio#t2005#index3
+
+#*What Every Programmer Needs to Know about Security (Advances in information Security)#@Neil Daswani,Anita Kesavan#t2006#index4
+
+#*Interpreting Kullback-Leibler divergence with the Neyman-earson lemma#@Shinto Eguchi,John Copas#t2006#index5
+
+#*Digital Media: Transformations in Human Communication#@Lee Humphreys,Paul Messaris#t2006#index6
+
+#*TOPP---the OpenMS proteomics pipeline#@Oliver Kohlbacher,Knut Reinert,Clemens Gröpl,Eva Lange,Nico Pfeifer,Ole Schulz-Trieglaff,Marc Sturm#t2007#index7
+
+#*Type Graphics and MacIntosh#@John Blaint#t1987#index8
+
+#*Adaptive Hypermedia and Adaptive Web-Based Systems#@Vincent Wade,Helen Ashman,Barry Smyth#t2006#index9
+
+#*Dependable Computing#@Carlos Alberto Maziero,João Gabriel Silva,Aline Maria Santos Andrade,Flávio Morais de Assis Silva #t2005#c#index10
+
+#*Calculus Early Transcendentals Single Variable#@Howard A. Anton #t2006#c#index11
+
+#*Webbots, Spiders, and Screen Scrapers#@Michael Schrenk,Michael Shrenk#t2007#c#index12
+
+#*Fast k-NN Classification Rule Using Metrics on Space-Filling Curves#@E. Skubalska-Rafajtowicz,A. Krzyzak#t1996 #cProceedings of the 13th International Conference on Pattern Recognition - Volume 2#index13
+
+#*Making the Digital City: The Early Shaping of Urban Internet Space (Design & the Built Environment S.)#@Alessandro Aurigi #t2005#c#index14
+
+#*Linspire 5.0: The No Nonsense Guide! (No Nonsense Guide! series)#@Eric Grebler#t2005#c#index15
+
+#*Podcasting for Profit: A Proven 10-Step Plan for Generating Income Through Audio and Video Podcasting#@Allan Hunkin#t2007 #c#index16
+
+#*Approximating fluid schedules in crossbar packet-switches and Banyan networks#@Michael Rosenblum,Constantine Caramanis,Michel X. Goemans,Vahid Tarokh#t2006#cIEEE/ACM Transactions on Networking (TON)#index17
+
+#*Federated Identity Management And Web Services Security With IBM Tivoli Security Solutions#@Axel Bucker#t2005#index18
+
+#*Start with a Digital Camera (Special Edition) (2nd Edition) (Start with a)#@John Odam#t2003#index19
+
+#*Open Process Frameworks: Patterns for the Adaptive e-Enterprise (Practitioners)#@David A. Marca#t2005#c#index20
+
+#*Fast and Efficient Context-Aware Services (Wiley Series on Communications Networking & Distributed Systems)#@Danny Raz,Arto Tapani Juhola,Joan Serrat-Fernandez,Alex Galis #t2006#c#index21
+
+#*Multimedia Directory 1997#@#t1997#c#index22
+
+#*ASIS&T Thesaurus of Information Science, Technology, And Librarianship (Asist Monograph Series)#@Alice Redmond-neal,Marjorie M. K. Hlava#t2005#c#index23
+
+#*On product covering in 3-tier supply chain models: natural complete problems for W[3] and W[4]#@Jianer Chen,Fenghui Zhang
+#t2006#cTheoretical Computer Science#index24
+
+#*Inside SQL Server 2005 Tools (Microsoft Windows Server System Series)#@Michael Raheem,Dima Sonkin,Thierry D'Hers,Kami LeMonds #t2006#c#index25
+
+#*Electronic Engineer's Handbook (Core Handbook CD-ROMs)#@Donald Christiansen#t1999#c#index26
+
+#*Call of Duty 2: Big Red One(tm) Official Strategy Guide (Official Strategy Guides)#@#t2005#c#index27
+
+#*Inside Microsoft Dynamics AX 4.0 #@Arthur Greef,Michael Fruergaard Pontoppidan,Lars Dragheim Olsen,Palle Agermark,Hans J. Skovgaard#t2006#c#index28
+
+#*Wiley Plus/Web CT Stand-alone to accompany Java Concepts (Wiley Plus Products)#@Cay S. Horstmann#t2006#c#index29
+
+#*Modeling methodology b: distributed simulation and the high level architecture#@#t2006#cProceedings of the 38th conference on Winter simulation#index30
+
+#*Beginning Ruby on Rails (Wrox Beginning Guides)#@Steve Holzner#t2006#c#index31
+
+#*Introduction to Information Systems#@R. Kelly Rainer#t2007 #c#index32
+
+#*SUSE Linux Enterprise Server Administration (Course 3037)#@Jason Eckert#t2006#index33
+
+#*Hyperstat: Macintosh Hypermedia for Analyzing Data and Learning Statistics#@David M. Lane#t1993#index34
+
+#*An Integrative Modelling Approach for Simulation and Analysis of Adaptive Agents#@Tibor Bosse,Catholijn M. Jonker,Jan Treur#t2006#cProceedings of the 39th annual Symposium on Simulation#index35
+
+#*Notes from industry#@Stanley Habib#t1973#cACM SIGMICRONewsletter#index36
+
+#*A New Quadtree Decomposition Reconstruction Method#@J. Knipe,X. Li#t1996#cProceedings of the 13th International Conference on Pattern Recognition - Volume 2#index37
+
+#*Computer Accounting with QuickBooks 2006#@Donna Ulmer#t2006 #c#index38
+
+#*Program Evaluation: Improving The Flow Of Information To The Congress#@#t2004#c#index39
+
+#*Jocelyn Robert: Aucune de mes mains ne fait mal#@Jocelyn Robert #t2005#c#index40
+
+#*Microprogramming for the hardware engineer#@John R. Mick#t1976 #cACM SIGMICRO Newsletter#index41
+
+#*Special Edition Using Adobe Creative Suite 2 (Special Edition Using)#@Michael Smick#t2005#c#index42
+
+#*At Ease With Performa#@Gene Orwell#t1994#c#index43
+
+#*Guia Visual de Microsoft Office 2000/ Microsoft Office 2000 Visual Guide (Guias Visuales)#@Jose Pedro Llamazares#t2003#c#index44
+
+#*Microsoft Expression Web: Visual QuickStart Guide#@Nolan Hester #t2007#c#index45
+
+#*TCP/IP Protocol Suite, 3 edition#@Behrouz A. Forouzan #t2005#c#index47
+
+#*Conker's Bad Fur Day (Prima's Official Strategy Guide)#@#t2001#c#index48
+
+#*A control word model for detecting conflicts between microoperations #@Ted Lewis,Bruce Shriver #t1975 #cACM SIGMICRO Newsletter #index49
+ 
+#*Exploring Macintosh Concepts in Visually Oriented Computing & Computing Concepts for End Users #@Ken Abernethy #t2000 #c #index50  
+
+#*KeyChamp 2.0 Macintosh Site License Package #@Michael Cloran #t2003 #c #index51  
+
+#*Word Processing on Your MacIntosh #@Rudolph Langer #t1985 #c #index52 
+
+#*Class-specific feature polynomial classifier for pattern classification and its application to handwritten numeral recognition#@Cheng-Lin Liu, Hiroshi Sako#t2006#cPattern Recognition#index53
+
+#*F.E.A.R.: First Encounter Assault Recon (Prima Official Game Guide) #@Ron Dulin #t2006 #c #index54  
+
+#*Effects of reward expectancy on sequential eye movements in monkeys #@Jeong-woo Sohn,Daeyeol Lee #t2006 #cNeural Networks #index55  
+
+#*A method to compute distance between two categorical values of same attribute in unsupervised learning for categorical data set #@Amir Ahmad,Lipika Dey #t2007 #cPattern Recognition Letters #index56  
+
+#*ExamInsight For MCP / MCSE Certification: Installing, Configuring, and Administering Microsoft Windows XP Professional Exam 70-270 (ExamInsight) #@Deborah Timmons #t2004 #c #index57  
+
+#*Computer Models of Musical Creativity #@David Cope #t2005 #c #index58  
+
+#*Computer Concepts Illustrated Complete, Sixth Edition (Illustrated (Thompson Learning)) #@June Jamrich Parsons,Dan Oja #t2006 #c #index59  
+
+#*Tips and Tuning Guide for MS Flight Simulator 2000 #@ #t2000 #c #index60  
+
+#*Windows Vista All-in-One Desk Reference For Dummies (For Dummies (Computer/Tech)) #@Woody Leonhard #t2006 #c #index61  
+
+#*Review of "Bit-Slice Microprocessor Design by John Mick and James Brick", McGraw-Hill Book Company, 1980 #@William J. Tracz #t1982 #cACM SIGMICRO Newsletter #index62
+
+#*DV Filmmaking: From Start to Finish (O'Reilly Digital Studio)#@Ian David Aronson#t2006#c#index63
+
+#*Ibook Fan Book: Smart and Beautiful to Boot (Ibook Fan Books) #@Derrick Story #t2004 #c #index64  
+
+#*GO Series: Microsoft Excel 2003 Volume 2 (Go With Microsoft Office) #@Shelley Gaskin,John Preston,Sally Preston #t2004 #c #index65  
+
+#*Data Structures #@Michael T. Goodrich #t2004 #c #index66  
+
+#*Hands-On Guide to Video Blogging and Podcasting: Emerging Media Tools for Business Communication (Hands-on Guide) #@Lionel Felix,Damien Stolarz #t2006 #c #index67 
+
+#*Mage Knight(tm): Apocalypse Official Strategy Guide (Official Strategy Guides) #@ #t2006 #c #index68  
+
+#*ECDL Advanced #@Brenden Munnelly,Paul Holden #t2002 #c #index69 
+
+#*The Effect of Faults on Network Expansion #@Amitabha Bagchi,Ankur Bhargava,Amitabh Chaudhary,David Eppstein,Christian Scheideler #t2006 #cTheory of Computing Systems #index70 
+
+#*Database Modeling in Biology: Practices and Challenges #@Zongmin Ma,Jake Chen #t2007 #c #index71  
+
+#*Microsoft Word 2003 Advanced #@Pamela W. Adams #t2005 #c #index72  
+
+#*Adaptive Multimedia Retrieval: First International Workshop, AMR 2003, Hamburg, Germany, September 15-16, 2003, Revised Selected and Invited Papers (Lecture Notes in Computer Science) #@Andreas Nürnberger,Marcin Detyniecki #t2004 #c #index73  
+
+#*Mesoscopic simulation of Ostwald ripening #@David J. Horntrop #t2006 #cJournal of Computational Physics #index74  
+
+#*Gungrave: 2006 Wall Calendar #@Nightow Yoshiro #t2005 #c #index75 
+
+#*Gurus, Hired Guns, and Warm Bodies: Itinerant Experts in a Knowledge Economy #@Stephen R. Barley,Gideon Kunda #t2006 #c #index76  
+
+#*Selected Areas in Cryptography: 12th International Workshop, SAC 2005, Kingston, ON, Canada, August 11-12, 2005, Revised Selected Papers (Lecture Notes in Computer Science) #@Bart Preneel #t2006 #c #index77  
+
+#*The Prentice Hall Planner for Student Success #@ #t2004 #c #index78  
+
+#*Design team composition for high level language computer architectures #@Lyle A. Cox, Jr.,James R. McGraw,Charles S. Wetherell #t1978 #cACM SIGARCH Computer Architecture News #index79  
+
+#*Keno Winner: A Guide To Winning At Video Keno #@Tom Collins #t2004 #c #index80  
+
+#*Real World Aperture (Real World) #@Ben Long #t2006 #c #index81  
+
+#*Making Projects Critical (Management, Work and Organisations) #@Damian Hodgson,Svetlana Cicmil #t2006 #c #index82  
+
+#*The Internet: A Critical Introduction #@Korinna Patelis #t2007 #c #index83    
+
+#*It's a Mad, Mad, Mad, Mad Mac/Book and Disk #@Carla Rose #t1994 #c #index84   
+
+#*Java for Everyone #@Cay S. Horstmann #t2007 #c #index85  
+
+#*Three-Level Caching for Efficient Query Processing in Large Web Search Engines #@Xiaohui Long,Torsten Suel #t2006 #cWorld Wide Web #index86  
+
+#*Essentials for Design Adobe Illustrator CS 2 - Level 1 (2nd Edition) (Essentials for Design) #@Dean Bagley #t2005 #c #index87  
+
+#*Operations Research: Macintosh Version (Business Statistics Series) #@Wayne L. Winston #t1994 #c #index88  
+
+#*Creative Code: Ästhetik und Programmierung am MIT Media Lab #@John Maeda,Red Burns #t2006 #c #index89 
+
+#*The Game Producer's Handbook #@Dan Irish #t2005 #c #index90  
+
+#*Visual Basic 2005 Demystified, 1 edition #@Jeff Kent #t2005 #c #index91  
+
+#*Oracle 10g PL/SQL: Guia de Consulta Rápida #@Celso H. Poderoso de Oliveira #t2005 #c #index92 
+
+#*CompTIA A+ Exam Cram (Exams 220-602, 220-603, 220-604) (Exam Cram) #@Charles J. Brooks #t2007 #c #index93
+
+#*On an initial transient deletion rule with rigorous theoretical support #@Hernan P. Awad,Peter W. Glynn #t2006 #cProceedings of the 38th conference on Winter simulation #index94  
+
+#*Microsoft Powerpoint 2003 (Marquee Series) #@Nita Hewitt Rutkosky,Denise Seguin #t2004 #c #index95 
+
+#*MICAI 2006: Advances in Artificial Intelligence: 5th Mexican International Conference on Artificial IntelligenceApizaco, Mexico, November 13-17, 2006Proceedings (Lecture Notes in Computer Science) #@Alexander Gelbukh,Carlos Alberto Reyes-Garcia #t2006 #c #index96  
+
+#*Tarski's World 3.0: Including the Macintosh TM Program (Center for the Study of Language and Information - Lecture Notes) #@Jon Barwise,John Etchemendy #t1991 #c #index97  
+
+#*Special issue: Dialog systems for health communications #@ #t2006 #cJournal of Biomedical Informatics #index98  
+
+#*Internet and HTML Training on CD-ROM #@ #t1995 #c #index99  
+
+#*Elsevier's Dictionary of Wild and Cultivated Plants #@W. E. Clason #t1997 #c #index100

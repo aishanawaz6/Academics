@@ -1,0 +1,12 @@
+1033,203,watch for 20 secs
+1011,203,skip
+1022,204,click
+1033,205,watch for 5 secs
+1044,205,skip
+1055,206,click
+1066,206,click
+1088,206,click
+1099,203,skip
+1113,205,watch for 5 secs
+1116,205,watch for 2 secs
+1119,205,watch for 9 secs

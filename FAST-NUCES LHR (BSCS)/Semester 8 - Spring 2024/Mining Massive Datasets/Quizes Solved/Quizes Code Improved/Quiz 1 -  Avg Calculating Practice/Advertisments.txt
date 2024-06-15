@@ -1,0 +1,7 @@
+111, 022, skip
+121, 234, click
+191, 022, watch 5sec
+115, 022, watch 3sec
+121, 234, click
+191, 234, skip
+121, 234, watch 2sec
